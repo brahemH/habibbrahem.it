@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Protégée par Mot de Passe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Section de Connexion -->
+    <div id="login-section">
+        <div class="login-container">
+            <h2><i class="fas fa-lock"></i> Accès Sécurisé</h2>
+            <p>Veuillez entrer le mot de passe pour accéder à la documentation.</p>
+            <input type="password" id="password-input" placeholder="Mot de passe">
+            <button onclick="checkPassword()"><i class="fas fa-sign-in-alt"></i> Accéder</button>
+            <p id="error-message" class="error-message"></p>
+        </div>
+    </div>
+
+    <!-- Section Documentation (masquée par défaut) -->
+    <div id="documentation-section" style="display: none;">
+        <header>
+            <div class="header-content">
+                <h1>Documentation du module Odoo pour API de synchronisation avec PrestaShop</h1>
+                <p>Intégration fluide entre Odoo et PrestaShop pour une gestion optimisée des produits et devis.</p>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#introduction"><i class="fas fa-home"></i> Introduction</a></li>
+                <li><a href="#architecture"><i class="fas fa-project-diagram"></i> Architecture</a></li>
+                <li><a href="#installation"><i class="fas fa-cogs"></i> Installation</a></li>
+                <li><a href="#endpoints"><i class="fas fa-code"></i> Endpoints API</a></li>
+                <li><a href="#resultats"><i class="fas fa-chart-line"></i> Résultats</a></li>
+                <li><a href="#conclusion"><i class="fas fa-check-circle"></i> Conclusion</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="introduction">
+                <h2><i class="fas fa-home"></i> 1. Introduction</h2>
+                <p>Ce document présente la création et l'intégration d'un module Odoo permettant la synchronisation avec un site e-commerce PrestaShop. L'API développée facilite la gestion des produits et des devis entre les deux plateformes. Des tests de l'API ont été réalisés avec Flask et Postman.</p>
+            </section>
+
+            <section id="architecture">
+                <h2><i class="fas fa-project-diagram"></i> 2. Architecture et Fonctionnalités</h2>
+                <h3>2.1. Modules Odoo utilisés</h3>
+                <p>Le module est basé sur les modules Odoo suivants :</p>
+                <div class="card-container">
+                    <div class="card">
+                        <h4><i class="fas fa-shopping-cart"></i> Sale</h4>
+                        <p>Gestion des devis et commandes.</p>
+                    </div>
+                    <div class="card">
+                        <h4><i class="fas fa-box"></i> Product</h4>
+                        <p>Gestion des produits.</p>
+                    </div>
+                    <div class="card">
+                        <h4><i class="fas fa-warehouse"></i> Stock</h4>
+                        <p>Gestion des stocks.</p>
+                    </div>
+                </div>
+
+                <h3>2.2. Fonctionnalités implémentées</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Récupération des produits : Endpoint permettant de lister tous les produits d'Odoo.</li>
+                    <li><i class="fas fa-check"></i> Importation d'un devis avec son ID : Endpoint permettant l'Importation d'un devis basé sur son ID.</li>
+                    <li><i class="fas fa-check"></i> Récupération des produits : Endpoint permettant de lister tous les devis depuis Odoo</li>
+                    <li><i class="fas fa-check"></i> Synchronisation avec PrestaShop : Synchronisation automatique des produits et des devis.</li>
+                </ul>
+            </section>
+
+            <section id="installation">
+                <h2><i class="fas fa-cogs"></i> 3. Installation et Configuration</h2>
+                <h3>3.1. Installation du module Odoo</h3>
+                <ol class="installation-steps">
+                    <li>Copier le module dans le répertoire <code>addons</code> d'Odoo.</li>
+                    <li>Vérifier la présence des fichiers essentiels :
+                        <ul>
+                            <li><code>__init__.py</code></li>
+                            <li><code>__manifest__.py</code></li>
+                            <li><code>controllers.py</code></li>
+                        </ul>
+                    </li>
+                    <li>Installer le module depuis l'interface Odoo ou via la ligne de commande :
+                        <pre><code>odoo-bin -c /etc/odoo/odoo.conf -u odoo_api_integration</code></pre>
+                    </li>
+                </ol>
+            </section>
+
+            <section id="endpoints">
+                <h2><i class="fas fa-code"></i> 4. Endpoints API et Tests</h2>
+                <h3>4.1. Endpoints implémentés</h3>
+                <div class="endpoint-card">
+                    <h4><i class="fas fa-download"></i> Récupération des produits</h4>
+                    <p><strong>Méthode :</strong> GET</p>
+                    <p><strong>URL :</strong> <code>/api/products</code></p>
+                    <p><strong>Réponse attendue :</strong></p>
+                    <pre><code>{
+"status": "success",
+"products": [
+{
+"price": 0.0,
+"image":climatiseur1.jpg
+"id": 7,
+"reference": "111111111111",
+"name": "tele"
+                            
+        }
+    ]
+}</code></pre>
+                </div>
+
+                <div class="endpoint-card">
+                    <h4><i class="fas fa-plus-circle"></i> Importation d'un devis</h4>
+                    <p><strong>Méthode :</strong> GET</p>
+                    <p><strong>URL :</strong> <code>/api/quotes/id</code></p>
+                    <p><strong>Réponse attendues :</strong></p>
+                    <pre><code>{
+{
+"product": "Dji Mini 4 pro",
+"price": 0.0,
+"quantity": 1.0
+}
+],
+"partner_id": 6,
+"id": 1,
+"total_amount": 10.0
+}
+</code></pre>
+<h4><i class="fas fa-plus-circle"></i> Importation de tous les devis</h4>
+<p><strong>Méthode :</strong> GET</p>
+<p><strong>URL :</strong> <code>/api/all_quotes</code></p>
+<p><strong>Réponse attendues :</strong></p>
+                    <p><strong>Réponse attendue :</strong></p>
+                    <pre><code> "status": "success",
+                        "quotes": [
+{
+"status": "draft",
+"total_amount": 10.0,
+"partner_name": "CMC Tunisie",
+"partner_id": 6,
+"id": 2,
+"order_lines": [
+{
+"price": 10.0,
+"product": "testttttttttttttt",
+"product_id": 8,
+"quantity": 1.0
+ }
+]
+
+"status": "draft",
+"total_amount": 0.0,
+"partner_name": "CMC Tunisie",
+"partner_id": 6,
+"id": 1,
+"order_lines": [
+{
+"price": 0.0,
+"product": "Dji Mini 4 pro",
+"product_id": 2,
+"quantity": 1.0
+}}
+]
+,
+200,
+</code></pre>
+                </div>
+
+                <h3>4.2. Test avec Flask</h3>
+                <p>Un serveur Flask a été utilisé pour simuler des requêtes HTTP vers l'API.</p>
+                <pre><code>import requests
+
+response = requests.get("http://localhost:8069/api/products")
+</code></pre>
+
+                <img src="flask1.png" alt="Test avec Postman" class="responsive-image">
+                <img src="flask2.png" alt="Test avec Postman" class="responsive-image">
+
+                <h3>4.3. Test avec Postman</h3>
+                <p>Les requêtes ont été envoyées via Postman en mode POST et GET. Les résultats ont confirmé le bon fonctionnement des endpoints.</p>
+                <img src="postman_test.png" alt="Test avec Postman" class="responsive-image">
+                <img src="postman_test2.png" alt="Test avec Postman" class="responsive-image">
+                <img src="postman_test3.png" alt="Test avec Postman" class="responsive-image">
+            </section>
+
+            <section id="resultats">
+                <h2><i class="fas fa-chart-line"></i> 5. Résultats et Analyse</h2>
+                <ul class="result-list">
+                    <li><i class="fas fa-check-circle"></i> L'API permet une synchronisation fluide entre Odoo et PrestaShop.</li>
+                    <li><i class="fas fa-check-circle"></i> Les tests sous Flask et Postman ont validé le bon fonctionnement des endpoints.</li>
+                    <li><i class="fas fa-check-circle"></i> Une future amélioration pourrait inclure l'authentification OAuth2 pour sécuriser l'accès.</li>
+                </ul>
+            </section>
+
+            <section id="conclusion">
+                <h2><i class="fas fa-check-circle"></i> 6. Conclusion</h2>
+                <p>Le module Odoo développé offre une API fonctionnelle permettant la synchronisation des produits et devis avec PrestaShop.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Haj Brahem Habib. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Mot de passe (à changer pour la production)
+        const correctPassword = "CMC-project2025";
+
+        // Fonction pour vérifier le mot de passe
+        function checkPassword() {
+            const passwordInput = document.getElementById("password-input").value;
+            const errorMessage = document.getElementById("error-message");
+            const loginSection = document.getElementById("login-section");
+            const documentationSection = document.getElementById("documentation-section");
+
+            if (passwordInput === correctPassword) {
+                // Afficher la documentation et masquer la section de connexion
+                loginSection.style.display = "none";
+                documentationSection.style.display = "block";
+            } else {
+                // Afficher un message d'erreur
+                errorMessage.textContent = "Mot de passe incorrect. Veuillez réessayer.";
+            }
+        }
+    </script>
+</body>
+</html>
