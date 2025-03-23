@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Technique - Script Vidéo</title>
+    <style>
+        /* Styles CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        section {
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            max-width: 900px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #ff6f61;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #ff6f61;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ff6f61;
+        }
+
+        a {
+            color: #2575fc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            margin-top: 40px;
+        }
+
+        /* Effets 3D avec Three.js */
+        #threejs-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Page de connexion */
+        #login-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+
+        #login-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        #login-form h2 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        #login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        #login-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #ff6f61;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #login-form button:hover {
+            background: #e65a50;
+        }
+
+        #error-message {
+            color: #ff6f61;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Masquer le contenu principal par défaut */
+        #main-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page de connexion -->
+    <div id="login-page">
+        <div id="login-form">
+            <h2>Connexion</h2>
+            <input type="text" id="username" placeholder="Login" required>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            <button onclick="checkLogin()">Se connecter</button>
+            <div id="error-message">Login ou mot de passe incorrect.</div>
+        </div>
+    </div>
+
+    <!-- Contenu principal (masqué par défaut) -->
+    <div id="main-content">
+        <!-- Conteneur pour l'effet 3D -->
+        <div id="threejs-container"></div>
+
+        <!-- En-tête -->
+        <header>
+            <h1>Documentation Technique - Script Vidéo</h1>
+        </header>
+
+        <!-- Section Campus Onboarding -->
+        <section id="campus-onboarding">
+            <h2>🎬 Campus Onboarding – Cinematic Reel Script 🎓</h2>
+            <div class="script-section">
+                <h3>🔊 Voice-Over Script:</h3>
+                <p>“Just arrived?”</p>
+                <p>“A new city. A new life. A new beginning.”</p>
+                <p>“You might feel lost at first...”</p>
+                <p>“But you're not alone.”</p>
+                <p>“At Degis, we welcome you with open arms.”</p>
+                <p>“We're here to guide you. Support you. Celebrate with you.”</p>
+                <p>“Because this... is your home now.”</p>
+                <p>“Welcome to Degis. Welcome home.”</p>
+            </div>
+            <div class="technical-breakdown">
+                <h3>🎥 Technical Breakdown (Shot-by-shot):</h3>
+                <table>
+                    <tr>
+                        <th>Scene</th>
+                        <th>Shot Description</th>
+                        <th>Camera Movement</th>
+                        <th>Visual Detail</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Campus exterior / student with luggage</td>
+                        <td>Drone / slow dolly in</td>
+                        <td>Golden hour light</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Student looking around, unsure</td>
+                        <td>Handheld or gimbal</td>
+                        <td>Emotional facial close-up</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Warm welcome at Degis booth</td>
+                        <td>Wide shot then cut to mid-close</td>
+                        <td>Volunteers with Degis T-shirts</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Students laughing / chatting / playing games</td>
+                        <td>Montage sequence</td>
+                        <td>Speed ramp transitions</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Close-up of handshake or helping hand</td>
+                        <td>Macro lens</td>
+                        <td>Emotional touch</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Group picture moment / group hug</td>
+                        <td>Pull back wide shot</td>
+                        <td>Joyful vibes</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Logo + text fade-in</td>
+                        <td>Static</td>
+                        <td>White background, soft music fade out</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="music-suggestion">
+                <h3>🎶 Music Suggestion:</h3>
+                <p>“Moments” by A Himitsu (No Copyright)</p>
+                <a href="https://www.youtube.com/watch?v=jSahKwYO8x8" target="_blank">YouTube Link – NCS Release</a>
+            </div>
+        </section>
+
+        <!-- Section Volunteer Recruitment -->
+        <section id="volunteer-recruitment">
+            <h2>🎬 Volunteer Recruitment – Cinematic Reel Script 💪</h2>
+            <div class="script-section">
+                <h3>🔊 Voice-Over Script:</h3>
+                <p>“What if you became more than just a student?”</p>
+                <p>“What if you became the change?”</p>
+                <p>“A smile. A helping hand. A voice that matters.”</p>
+                <p>“At Degis, we don’t just organize events…”</p>
+                <p>“We create impact.”</p>
+                <p>“We build teams. Friendships. Memories.”</p>
+                <p>“Ready to make a difference?”</p>
+                <p>“Join Degis. Applications now open.”</p>
+            </div>
+            <div class="technical-breakdown">
+                <h3>🎥 Technical Breakdown:</h3>
+                <table>
+                    <tr>
+                        <th>Scene</th>
+                        <th>Shot Description</th>
+                        <th>Camera Movement</th>
+                        <th>Visual Detail</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Silhouette walking into spotlight</td>
+                        <td>Studio light fade-in</td>
+                        <td>Symbolic start</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Flashback montage of past events</td>
+                        <td>Fast cuts / jump cuts</td>
+                        <td>Visual energy</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Handing flyers / food / help</td>
+                        <td>Slow motion</td>
+                        <td>Emotive scenes</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Volunteers organizing together</td>
+                        <td>Mid-shot + laugh close-ups</td>
+                        <td>Real camaraderie</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Degis team cheering or celebrating</td>
+                        <td>Wide group shot</td>
+                        <td>Sunset backlight</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Application form on screen / phone</td>
+                        <td>Screen capture or over-shoulder</td>
+                        <td>Focused hands</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Logo + CTA: “Join the Team” + Deadline</td>
+                        <td>Clean outro</td>
+                        <td>White or branded background</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="music-suggestion">
+                <h3>🎶 Music Suggestion:</h3>
+                <p>“Sky High” by Elektronomia (No Copyright)</p>
+                <a href="https://www.youtube.com/watch?v=TW9d8vYrVFQ" target="_blank">YouTube Link – NCS Release</a>
+            </div>
+        </section>
+
+        <!-- Pied de page -->
+        <footer>
+            <p>&copy; 2025 Brahem. Tous droits réservés.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script>
+        // Fonction pour vérifier le login et le mot de passe
+        function checkLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (username === 'kiruu.c' && password === 'Degis2025!') {
+                // Afficher le contenu principal et masquer la page de connexion
+                document.getElementById('login-page').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                // Afficher un message d'erreur
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        // Effet 3D avec Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('threejs-container').appendChild(renderer.domElement);
+
+        const geometry = new THREE.TorusGeometry(2, 0.5, 16, 100);
+        const material = new THREE.MeshBasicMaterial({ color: 0x2575fc, wireframe: true });
+        const torus = new THREE.Mesh(geometry, material);
+        scene.add(torus);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            torus.rotation.x += 0.01;
+            torus.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Redimensionnement de la scène 3D lors du redimensionnement de la fenêtre
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
